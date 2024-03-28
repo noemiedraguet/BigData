@@ -1,39 +1,22 @@
 physical schemas { 
 	
 	document schema mymongo {
-		collection actorCollection {
-			fields {
-				id,
-				fullname,
-				birthyear,
-				deathyear,
-				movies[0-N]{
-					id,
-					title,
-					rating[1]{
-						rate,
-						numberofvotes
-					}
-				}
-			}
-		}
-	} , 
-
 		collection 	Customers {
 			fields {
 				_id,
-				Address,
 				City,
 				CompanyName,
+				ContactName,
 				ContactTitle,
 				Country,
 				Fax, 
 				ID, 
 				Phone, 
 				PostalCode, 
-				Region
+				Region,
+				Address
 			}
-		}, 
+		},
 
 		collection 	Employees {
 			fields {
@@ -60,7 +43,6 @@ physical schemas {
 			}
 		},
 
-
 		collection 	Orders {
 			fields {
 				_id,
@@ -69,7 +51,10 @@ physical schemas {
 				OrderDate, 
 				RequiredDate,
 				ShipAddress,
-				customer,
+				customer[1]{
+					ContactName,
+					CustomerID
+				},
 				OrderID,
 				ShipCity,
 				ShipCountry,
@@ -81,47 +66,41 @@ physical schemas {
 			}
 		}, 
 
+		collection 	Suppliers {
+			fields {
+				_id,
+				Address,
+				City, 
+				CompanyName,
+				ContactName, 
+				ContactTitle,
+				Country,
+				Fax,
+				HomePage,
+				Phone,
+				PostalCode,
+				Region, 
+				SupplierID
+			}
+		}
+	}, 
 
-
-
-
-
-		key value schema myredis {
-		kvpairs shippers {
-			key : "shippers:"[id],
-			value : string{
-				COMPANYNAME,
-				PHONE
-			} , 
-		kvpairs stockinfo {
-			key : "products:"[id],
+	key value schema myredis {
+		kvpairs shippersName {
+			key : "SHIPPERS:"[ShipperID]":COMPANYNAME",
+			value : string{COMPANYNAME}
+		} , 
+		kvpairs shippersPhone {
+			key : "SHIPPERS:"[ShipperID]":PHONE",
+			value : string{PHONE}
+		} ,
+		kvpairs stockInfo {
+			key : "PRODUCT:"[ProductID]":STOCKINFO",
 			value : hash{
 				UnitsInStock,
 				UnitsOnOrder
-			}
+				}
 		}
 	}
-
-}
 }
 
-
-
-		key value schema myredis {
-		kvpairs shippers {
-			key : "shippers:"[id],
-			value : string{
-				COMPANYNAME,
-				PHONE
-			} , 
-		kvpairs stockinfo {
-			key : "products:"[id],
-			value : hash{
-				UnitsInStock,
-				UnitsOnOrder
-			}
-		}
-	}
-
-}
-}
