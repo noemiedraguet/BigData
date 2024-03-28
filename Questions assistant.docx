@@ -1,0 +1,12 @@
+1. Schéma physique
+
+1.1. Mongo DB
+
+- Doit-on spécifier les types de données et les clés primaires/étrangères?
+- Est-ce que la syntaxe du sous-document est bien spécifiée?
+
+1.2. Redis
+
+- Est-ce que la syntaxe des clés est correcte? ("PRODUCT:"[ProductID]":STOCKINFO")
+- Est-ce que "string{...}" est correct?
+- Clés référentielles et IDs
