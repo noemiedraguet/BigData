@@ -1,7 +1,7 @@
 physical schemas { 
 	
 	document schema mymongo {
-		collection 	Customers {
+		collection Customers {
 			fields {
 				_id,
 				City,
@@ -18,7 +18,7 @@ physical schemas {
 			}
 		},
 
-		collection 	Employees {
+		collection Employees {
 			fields {
 				_id,
 				Address,
@@ -43,7 +43,7 @@ physical schemas {
 			}
 		},
 
-		collection 	Orders {
+		collection Orders {
 			fields {
 				_id,
 				EmployeeRef,
@@ -66,7 +66,7 @@ physical schemas {
 			}
 		}, 
 
-		collection 	Suppliers {
+		collection Suppliers {
 			fields {
 				_id,
 				Address,
