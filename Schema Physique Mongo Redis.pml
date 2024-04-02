@@ -101,6 +101,108 @@ physical schemas {
 				UnitsOnOrder
 				}
 		}
+	},
+
+	relational schema reldata {
+		table Orders{
+			columns{
+				OrderID,
+		                CustomerRef,
+		                EmployeeRef,
+		                OrderDate,
+		                RequiredDate,
+		                ShippedDate,
+		                ShipVia,
+		                Freight,
+		                ShipName,
+		                ShipAdress,
+		                ShipCity,
+		                ShipRegion,
+		                ShipPostalCode,
+		                ShipCountry
+			}
+		        references{
+		        	CustomerRef -> reldata.Shippers.ShipperID
+		                EmployeeRef -> reldata.Customers.CustomerID
+		                ShipVia -> reldata.Shippers.ShipperID
+		        }
+		}
+		
+		
+		table Products {
+			columns{
+				ProductID,
+		                ProductName,
+		                SupplierRef,
+		                CategoryRef,
+		                QuantityPerUnit,
+		                UnitPrice,
+		                UnitsInStock,
+		                UnitsOnOrder,
+		                ReorderLevel,
+		                Discontinued
+			}
+			references {
+				SupplierRef -> reldata.Suppliers.SupplierID
+                		CategoryRef -> reldata.Categories.CategoryID
+            		}
+		}
+
+        	table ProductsInfo{
+			columns{
+				ProductID,
+		                ProductName,
+		                SupplierRef,
+		                CategoryRef,
+		                QuantityPerUnit,
+		                UnitPrice,
+		                ReorderLevel,
+		                Discontinued
+			}
+		}
+
+        	table Region{
+			columns{
+				RegionID,
+                		RegionDescription
+			}
+		}
+
+        	table Shippers{
+			columns{
+				ShipperID,
+                		CompanyName,
+                		Phone
+			}
+		}
+
+        	table Suppliers{
+			columns{
+				SupplierID,
+		                CompanyName,
+		                ContactName,
+		                ContactTitle,
+		                Address,
+		                City,
+		                Region,
+		                PostalCode,
+		                Country,
+		                Phone,
+		                Fax,
+		                HomePage
+			}
+		}
+
+        	table Territories{
+			columns{
+				TerritoryID,
+		                TerritoryDescription,
+		                RegionRef
+			}
+            		references {
+				RegionRef -> reldata.Region.RegionID
+            		}
+		}
 	}
 }
 
