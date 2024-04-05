@@ -1,0 +1,5 @@
+Groupe 3 :
+•	Récupérer les informations complètes de toutes les catégories (Categories) dont la description ne contient pas le mot « sweet ».
+•	Récupérer les informations complètes du client (Customers) ayant passé la commande (Orders) identifiée par le numéro "10248"
+•	Récupérer les informations complètes du transporteur (Shippers) dont l’identifiant est 2
+•	Récupérer les informations complètes des clients (Customers) ayant passé une commande (Orders) encodée par un employé (Employees) ayant pour prénom "Margaret"
