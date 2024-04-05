@@ -10,3 +10,15 @@
 - Est-ce que la syntaxe des clés est correcte? ("PRODUCT:"[ProductID]":STOCKINFO")
 - Est-ce que "string{...}" est correct?
 - Clés référentielles et IDs
+
+2. Requêtes
+
+- Récupérer = juste print?
+
+2.1. Infos catégories
+
+- Que veut-on dire par "Informations complètes" → Les photos ne sont pas affichables dans VSCode ou prennent beaucoup trop de place
+
+2.2. Infos client lié à une commande
+
+- Est-ce qu'on laisse les valeurs nulles?
