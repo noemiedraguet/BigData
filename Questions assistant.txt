@@ -22,3 +22,7 @@
 2.2. Infos client lié à une commande
 
 - Est-ce qu'on laisse les valeurs nulles?
+
+2.3. Infos liées au shipper 2
+
+- Privilégier le fait que le code soit réutilisable ou bien moins des lignes? (Car dans tous les cas on doit savoir à quoi correspondent les infos)

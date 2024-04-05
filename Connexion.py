@@ -57,11 +57,15 @@ def mongodb_query2():
        print(f'\nID: {id}\nName: {Name}\nAddress: {Address}\nCity: {City}\nPostcode: {Postal_Code}\nRegion: {Region}\nCountry: {Country}\nCompany Name: {Company_Name}\nContact title: {Contact_Title}\nFax: {Fax}\nPhone number: {Phone}\n')
 
         
-def redis_select():
+def redis_query3():
     r = redis.Redis(host='idasm101.unamurcs.be', port=63792, db=0)
-    hash_result = r.hget('PRODUCT:72:STOCKINFO', 'UnitsInStock')
-    print(f'Product in stock: {hash_result}')
+    infos_shipper_2 = r.keys('SHIPPERS:2:*')
+    infos = []
+    for key in infos_shipper_2:
+        infos.append(r.get(key).decode('utf-8'))
+
+    print(f'Company name: {infos[0]}\nPhone number: {infos[1]}')
         
 #mysql_query1()
-mongodb_query2()
-#redis_select()
+#mongodb_query2()
+#redis_query3()
