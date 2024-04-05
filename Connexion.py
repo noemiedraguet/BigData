@@ -65,7 +65,41 @@ def redis_query3():
         infos.append(r.get(key).decode('utf-8'))
 
     print(f'Company name: {infos[0]}\nPhone number: {infos[1]}')
-        
-#mysql_query1()
-#mongodb_query2()
-#redis_query3()
+
+def query4():
+    client = pymongo.MongoClient('idasm101.unamurcs.be', 27012)
+    db = client['myMongoDB']
+    collection = db["Employees"]
+    collection_2 = db["Orders"]
+    collection_3 = db["Customers"]
+
+    pipeline = {'FirstName': 'Margaret'}
+    
+    employees = collection.find(pipeline)
+    for employee in employees :
+        empl_ID = employee['EmployeeID']
+        pipeline2 = {'EmployeeRef': empl_ID}
+        orders = collection_2.find(pipeline2)
+        for order in orders:
+            cl_ID = order['customer']['CustomerID']
+            pipeline3 = {'ID': cl_ID}
+            clients = collection_3.find(pipeline3)
+            for client in clients:
+                id = client['ID']
+                Name = client['ContactName']
+                Address = client['Address']
+                City = client['City']
+                Postal_Code = client['PostalCode']
+                Region = client['Region']
+                Country = client['Country']
+                Company_Name = client['CompanyName']
+                Contact_Title = client['ContactTitle']
+                Fax = client['Fax']
+                Phone = client['Phone']
+                print(f'\nID: {id}\nName: {Name}\nAddress: {Address}\nCity: {City}\nPostcode: {Postal_Code}\nRegion: {Region}\nCountry: {Country}\nCompany Name: {Company_Name}\nContact title: {Contact_Title}\nFax: {Fax}\nPhone number: {Phone}\n\n')
+
+
+mysql_query1()
+mongodb_query2()
+redis_query3()
+query4()
