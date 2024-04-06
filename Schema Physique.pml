@@ -126,8 +126,7 @@ physical schemas {
 		                EmployeeRef -> reldata.Customers.CustomerID
 		                ShipVia -> reldata.Shippers.ShipperID
 		        }
-		}
-		
+		},
 		
 		table Products {
 			columns{
@@ -146,7 +145,7 @@ physical schemas {
 				SupplierRef -> reldata.Suppliers.SupplierID
                 		CategoryRef -> reldata.Categories.CategoryID
             		}
-		}
+		},
 
         	table ProductsInfo{
 			columns{
@@ -159,14 +158,14 @@ physical schemas {
 		                ReorderLevel,
 		                Discontinued
 			}
-		}
+		},
 
         	table Region{
 			columns{
 				RegionID,
                 		RegionDescription
 			}
-		}
+		},
 
         	table Shippers{
 			columns{
@@ -174,7 +173,7 @@ physical schemas {
                 		CompanyName,
                 		Phone
 			}
-		}
+		},
 
         	table Suppliers{
 			columns{
@@ -191,7 +190,7 @@ physical schemas {
 		                Fax,
 		                HomePage
 			}
-		}
+		},
 
         	table Territories{
 			columns{
@@ -202,8 +201,9 @@ physical schemas {
             		references {
 				RegionRef -> reldata.Region.RegionID
             		}
-		}
-    table Categories {
+		},
+
+    		table Categories {
 			columns{
 				CategoryID, (primary)
 				CategoryName,
@@ -211,19 +211,19 @@ physical schemas {
 				Picture
 			}
 			references {
-		}
-	}
+			}
+		},
 
-    table CustomerDemographics {
-        columns{
-            CustomerTypeID,(primary)
-            CustomerDesc
-        }
-        references {
+		table CustomerDemographics {
+			columns{
+		            CustomerTypeID,(primary)
+		            CustomerDesc
+		        }
+		        references {
+		        }
+	        },
 
-            }
-        }
-    table Customers {
+    		table Customers {
 			columns{
 				CustomerID, (primary)
 				CompanyName,
@@ -240,58 +240,55 @@ physical schemas {
 			references {
 				CustomerID -> mymono.Customers.id
 			}
-		}
+		},
 
-	table Employees {
-	        columns{
-	            EmployeeID, (primary)
-	            LastName,
-	            FirstName,
-	            Title,
-	            TitleOfCourtesy,
-	            BirthDate,
-	            HireDate,
-	            Address,
-	            City,
-	            Region,
-	            PostalCode,
-	            Country,
-	            HomePhone,
-	            Extension,
-	            Photo,
-	            Notes,
-	            ReportsTo,
-	            PhotoPath,
-	            Salary
-	        }
-	        references {
-	            EmployeeID -> mymono.Employees.id
+		table Employees {
+		        columns{
+		            EmployeeID, (primary)
+		            LastName,
+		            FirstName,
+		            Title,
+		            TitleOfCourtesy,
+		            BirthDate,
+		            HireDate,
+		            Address,
+		            City,
+		            Region,
+		            PostalCode,
+		            Country,
+		            HomePhone,
+		            Extension,
+		            Photo,
+		            Notes,
+		            ReportsTo,
+		            PhotoPath,
+		            Salary
+		        }
+		        references {
+		            EmployeeID -> mymono.Employees.id
+		        }
+		},
 	
-	        }
-	    }
+		table EmployeesTerritories {
+		        columns{
+		            EmployeeRef,(primary)
+		            TerritoryRef (primary)
+		        }
+		        references {
+		        }
+		},
 	
-	    table EmployeesTerritories {
-	        columns{
-	            EmployeeRef,(primary)
-	            TerritoryRef (primary)
-	        }
-	        references {
-	
-	        }
-	    }
-	
-	    table Order_Details {
-				columns{
-					OrderRef, (primary)
-					ProductRef,(primary)
-					UnitPrice,
-					Quantity,
-					Discount
+		table Order_Details {
+			columns{
+				OrderRef, (primary)
+				ProductRef,(primary)
+				UnitPrice,
+				Quantity,
+				Discount
 				}
-				references {
-	
+			references {
 				}
-			}
+		}
 	}
 }
 
