@@ -122,8 +122,8 @@ physical schemas {
 		                ShipCountry
 			}
 		        references{
-		        	CustomerRef -> reldata.Shippers.ShipperID
-		                EmployeeRef -> reldata.Customers.CustomerID
+		        	CustomerRef -> reldata.Customers.CustomerID
+		                EmployeeRef -> reldata.Employees.EmployeeID
 		                ShipVia -> reldata.Shippers.ShipperID
 		        }
 		},
@@ -238,7 +238,7 @@ physical schemas {
 				Fax
 			}
 			references {
-				CustomerID -> mymono.Customers.id
+				CustomerID -> mymongo.Customers.id
 			}
 		},
 
@@ -265,7 +265,7 @@ physical schemas {
 		            Salary
 		        }
 		        references {
-		            EmployeeID -> mymono.Employees.id
+		            EmployeeID -> mymongo.Employees.id
 		        }
 		},
 	
