@@ -99,7 +99,7 @@ def query4():
                 print(f'\nID: {id}\nName: {Name}\nAddress: {Address}\nCity: {City}\nPostcode: {Postal_Code}\nRegion: {Region}\nCountry: {Country}\nCompany Name: {Company_Name}\nContact title: {Contact_Title}\nFax: {Fax}\nPhone number: {Phone}\n\n')
 
 
-mysql_query1()
-mongodb_query2()
-redis_query3()
-query4()
+#mysql_query1()
+#mongodb_query2()
+#redis_query3()
+#query4()

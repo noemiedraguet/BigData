@@ -1,8 +1,11 @@
-1. Schéma physique
+
+1. Schéma physique → Langage hydra
+Où se trouvent les attributs et entités + mappings
+Mettre les clés primaires et étrangères (documentation)
 
 1.1. Mongo DB
 
-- Doit-on spécifier les types de données et les clés primaires/étrangères?
+- Doit-on spécifier les types de données et les clés primaires/étrangères? #Id en commentaire
 - Est-ce que la syntaxe du sous-document est bien spécifiée?
 
 1.2. Redis
@@ -13,17 +16,15 @@
 
 2. Requêtes
 
-- Récupérer = juste print?
-- Certaines infos du schéma absentes dans les BD (mais pas demandées dans les requêtes)
-- Que 4 requêtes dont aucune qui fait appel à plusieurs BD?
+- Récupérer = juste print? → Fichier
 
 2.1. Infos catégories
 
-- Que veut-on dire par "Informations complètes" → Les photos ne sont pas affichables dans VSCode ou prennent beaucoup trop de place
+- Que veut-on dire par "Informations complètes" → Les photos ne sont pas affichables dans VSCode ou prennent beaucoup trop de place (pas nécessaire)
 
 2.2. Infos client lié à une commande
 
-- Est-ce qu'on laisse les valeurs nulles?
+- Est-ce qu'on laisse les valeurs nulles? → Critiquer l'encodage des données
 
 2.3. Infos liées au shipper 2
 
