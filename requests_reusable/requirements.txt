@@ -1,0 +1,10 @@
+#Data handling
+pandas
+
+#Data connection
+pymongo
+redis
+mysql-connector-python
+
+#Display
+Jinja2
