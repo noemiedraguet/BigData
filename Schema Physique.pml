@@ -3,7 +3,7 @@ physical schemas {
 	document schema mymongo {
 		collection Customers {
 			fields {
-				_id,
+				_id,		# Identifiant primaire
 				City,
 				CompanyName,
 				ContactName,
@@ -20,7 +20,7 @@ physical schemas {
 
 		collection Employees {
 			fields {
-				_id,
+				_id,		# Identifiant primaire
 				Address,
 				City,
 				Country,
@@ -45,7 +45,7 @@ physical schemas {
 
 		collection Orders {
 			fields {
-				_id,
+				_id,		# Identifiant primaire
 				EmployeeRef,
 				Freight,
 				OrderDate, 
@@ -68,7 +68,7 @@ physical schemas {
 
 		collection Suppliers {
 			fields {
-				_id,
+				_id,		# Identifiant primaire
 				Address,
 				City, 
 				CompanyName,
@@ -106,7 +106,7 @@ physical schemas {
 	relational schema reldata {
 		table Orders{
 			columns{
-				OrderID,
+				OrderID,		# Identifiant primaire
 		                CustomerRef,
 		                EmployeeRef,
 		                OrderDate,
@@ -130,7 +130,7 @@ physical schemas {
 		
 		table Products {
 			columns{
-				ProductID,
+				ProductID,		# Identifiant primaire
 		                ProductName,
 		                SupplierRef,
 		                CategoryRef,
@@ -149,7 +149,7 @@ physical schemas {
 
         	table ProductsInfo{
 			columns{
-				ProductID,
+				ProductID,		# Identifiant primaire
 		                ProductName,
 		                SupplierRef,
 		                CategoryRef,
@@ -162,14 +162,14 @@ physical schemas {
 
         	table Region{
 			columns{
-				RegionID,
+				RegionID,		# Identifiant primaire
                 		RegionDescription
 			}
 		},
 
         	table Shippers{
 			columns{
-				ShipperID,
+				ShipperID,		# Identifiant primaire
                 		CompanyName,
                 		Phone
 			}
@@ -177,7 +177,7 @@ physical schemas {
 
         	table Suppliers{
 			columns{
-				SupplierID,
+				SupplierID,		# Identifiant primaire
 		                CompanyName,
 		                ContactName,
 		                ContactTitle,
@@ -194,7 +194,7 @@ physical schemas {
 
         	table Territories{
 			columns{
-				TerritoryID,
+				TerritoryID,		# Identifiant primaire
 		                TerritoryDescription,
 		                RegionRef
 			}
@@ -205,7 +205,7 @@ physical schemas {
 
     		table Categories {
 			columns{
-				CategoryID, (primary)
+				CategoryID,		# Identifiant primaire
 				CategoryName,
 				Description,
 				Picture
@@ -216,7 +216,7 @@ physical schemas {
 
 		table CustomerDemographics {
 			columns{
-		            CustomerTypeID,(primary)
+		            CustomerTypeID,		# Identifiant primaire
 		            CustomerDesc
 		        }
 		        references {
@@ -225,7 +225,7 @@ physical schemas {
 
     		table Customers {
 			columns{
-				CustomerID, (primary)
+				CustomerID,		# Identifiant primaire
 				CompanyName,
 				ContactName,
 				ContactTitle,
@@ -244,7 +244,7 @@ physical schemas {
 
 		table Employees {
 		        columns{
-		            EmployeeID, (primary)
+		            EmployeeID,		# Identifiant primaire
 		            LastName,
 		            FirstName,
 		            Title,
@@ -271,8 +271,8 @@ physical schemas {
 	
 		table EmployeesTerritories {
 		        columns{
-		            EmployeeRef,(primary)
-		            TerritoryRef (primary)
+		            EmployeeRef,	# Identifiant primaire
+		            TerritoryRef 	# Identifiant primaire
 		        }
 		        references {
 		        }
@@ -280,8 +280,8 @@ physical schemas {
 	
 		table Order_Details {
 			columns{
-				OrderRef, (primary)
-				ProductRef,(primary)
+				OrderRef,	# Identifiant primaire
+				ProductRef,	# Identifiant primaire
 				UnitPrice,
 				Quantity,
 				Discount
