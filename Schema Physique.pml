@@ -3,84 +3,84 @@ physical schemas {
 	document schema mymongo {
 		collection Customers {
 			fields {
-				_id,		# Identifiant primaire
-				City,
-				CompanyName,
-				ContactName,
-				ContactTitle,
-				Country,
-				Fax, 
-				ID, 
-				Phone, 
-				PostalCode, 
-				Region,
-				Address
+				_id,		# Identifiant primaire (ObjectId)
+				City,					# (String)
+				CompanyName,				# (String)
+				ContactName,				# (String)
+				ContactTitle,				# (String)
+				Country,				# (String)
+				Fax, 					# (String)
+				ID, 					# (String)
+				Phone,					# (String) 
+				PostalCode,				# (String) 
+				Region,					# (String)
+				Address					# (String)
 			}
 		},
 
 		collection Employees {
 			fields {
-				_id,		# Identifiant primaire
-				Address,
-				City,
-				Country,
-				Extension,
-				FirstName, 
-				HireDate,
-				HomePhone, 
-				LastName,
-				Photo, 
-				PostalCode, 
-				Region, 
-				Salary, 
-				Title,
-				BirthDate,
-				EmployeeID,
-				Notes, 
-				PhotoPath,
-				ReportsTo,
-				TitleOfCourtesy
+				_id,		# Identifiant primaire (ObjectId)
+				Address,				# (String)
+				City,					# (String)
+				Country,				# (String)
+				Extension,				# (String)
+				FirstName, 				# (String)
+				HireDate,				# (ISODate)
+				HomePhone, 				# (String)
+				LastName,				# (String)
+				Photo, 					# (BinData)
+				PostalCode, 				# (String)
+				Region, 				# (String)
+				Salary,					# (Double) 
+				Title,					# (String)
+				BirthDate,				# (ISODate)
+				EmployeeID,				# (Int32)
+				Notes, 					# (String)
+				PhotoPath,				# (String)
+				ReportsTo,				# (String)
+				TitleOfCourtesy				# (String)
 			}
 		},
 
 		collection Orders {
 			fields {
-				_id,		# Identifiant primaire
-				EmployeeRef,
-				Freight,
-				OrderDate, 
-				RequiredDate,
-				ShipAddress,
-				customer[1]{
-					ContactName,
-					CustomerID
+				_id,		# Identifiant primaire (ObjectId)
+				EmployeeRef,				# (Int32)
+				Freight,				# (Double)
+				OrderDate, 				# (ISODate)
+				RequiredDate,				# (ISODate)
+				ShipAddress,				# (String)
+				customer[1]{				# (Object)
+					ContactName,				# (String)
+					CustomerID				# (String)
 				},
-				OrderID,
-				ShipCity,
-				ShipCountry,
-				ShipName,
-				ShipPostalCode,
-				ShipRegion,
-				ShipVia,
-				ShippedDate
+				OrderID,				# (Int32)
+				ShipCity,				# (String)
+				ShipCountry,				# (String)
+				ShipName,				# (String)
+				ShipPostalCode,				# (String)
+				ShipRegion,				# (String)
+				ShipVia,				# (Int32)
+				ShippedDate				# (ISODate)
 			}
 		}, 
 
 		collection Suppliers {
 			fields {
-				_id,		# Identifiant primaire
-				Address,
-				City, 
-				CompanyName,
-				ContactName, 
-				ContactTitle,
-				Country,
-				Fax,
-				HomePage,
-				Phone,
-				PostalCode,
-				Region, 
-				SupplierID
+				_id,		# Identifiant primaire (ObjectId)
+				Address,				# (String)
+				City, 					# (String)
+				CompanyName,				# (String)
+				ContactName,				# (String) 
+				ContactTitle,				# (String)
+				Country,				# (String)
+				Fax,					# (String)
+				HomePage,				# (String)
+				Phone,					# (String)
+				PostalCode,				# (String)
+				Region, 				# (String)
+				SupplierID				# (Int32)
 			}
 		}
 	}, 
