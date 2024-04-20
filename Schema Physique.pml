@@ -1,5 +1,5 @@
 physical schemas { 
-	
+														
 	document schema mymongo {
 		collection Customers {
 			fields {
@@ -104,191 +104,203 @@ physical schemas {
 	},
 
 	relational schema reldata {
+
+    		table Categories {
+			columns{
+				CategoryID,		# Identifiant primaire (int)
+				CategoryName,					# (varcar(15))
+				Description,					# (mediumtext)
+				Picture						# (varchar(15))
+			}
+		},
+
+		table CustomerDemographics {
+			columns{
+		            CustomerTypeID,		# Identifiant primaire (varchar(10))
+		            CustomerDesc					# (mediumtext)
+		        }
+	        },
+
+    		table Customers {
+			columns{
+				CustomerID,		# Identifiant primaire (varchar(5))
+				CompanyName,					# (varchar(40))
+				ContactName,					# (varchar(30))
+				ContactTitle,					# (varchar(30))
+				Address,					# (varchar(60))
+				City,						# (varchar(15))
+				Region,						# (varchar(15))
+				PostalCode,					# (varchar(10))
+				Country,					# (varchar(15))
+				Phone,						# (varchar(24))
+				Fax						# (varchar(24))
+			}
+			references {
+				CustomerID -> mymongo.Customers.ID
+			}
+		},
+
+		table Employees {
+		        columns{
+		            EmployeeID,			# Identifiant primaire (int)
+		            LastName,						# (varchar(20))
+		            FirstName,						# (varchar(10))
+		            Title,						# (varchar(30))
+		            TitleOfCourtesy,					# (varchar(25))
+		            BirthDate,						# (datetime)
+		            HireDate,						# (datetime)
+		            Address,						# (varchar(60))
+		            City,						# (varchar(15))
+		            Region,						# (varchar(15))
+		            PostalCode,						# (varchar(10))
+		            Country,						# (varchar(15))
+		            HomePhone,						# (varchar(24))
+		            Extension,						# (varchar(4))
+		            Photo,						# (longblob)
+		            Notes,						# (mediumtext)
+		            ReportsTo,						# (int)
+		            PhotoPath,						# (varchar(255))
+		            Salary						# (float)
+		        }
+		        references {
+		            EmployeeID -> mymongo.Employees.EmployeeID
+		        }
+		},
+	
+		table EmployeesTerritories {
+		        columns{
+		            EmployeeRef,		# Identifiant primaire (int)
+		            TerritoryRef 		# Identifiant primaire (varchar(20))
+		        }
+		        references {
+			    EmployeeRef -> mymongo.Employees.EmployeeID, 
+	   	 	    TerritoryRef -> myrel.Territories.TerritoryID
+		        }
+		},
+	
+		table Order_Details {
+			columns{
+				OrderRef,		# Identifiant primaire (int)
+				ProductRef,		# Identifiant primaire (int)
+				UnitPrice,					# (decimal(10,4))
+				Quantity,					# (smallint)
+				Discount					# (double(8,0)) 					 
+				}
+			references {
+				OrderRef -> myrel.Orders.OrderID, 
+				OrderRef -> mymongo.Orders.OrderID
+				ProductRef -> myrel.Products.ProductID
+				}
+		}
 		table Orders{
 			columns{
-				OrderID,		# Identifiant primaire
-		                CustomerRef,
-		                EmployeeRef,
-		                OrderDate,
-		                RequiredDate,
-		                ShippedDate,
-		                ShipVia,
-		                Freight,
-		                ShipName,
-		                ShipAdress,
-		                ShipCity,
-		                ShipRegion,
-		                ShipPostalCode,
-		                ShipCountry
+				OrderID,		# Identifiant primaire (int)
+		                CustomerRef,					# (varchar(15))
+		                EmployeeRef,					# (int)
+		                OrderDate,					# (datetime)
+		                RequiredDate,					# (datetime)
+		                ShippedDate,					# (datetime)
+		                ShipVia,					# (int)
+		                Freight,					# (decimal(10,4))
+		                ShipName,					# (varchar(40))
+		                ShipAdress,					# (varchar(60))
+		                ShipCity,					# (varchar(15))
+		                ShipRegion,					# (varchar(15))
+		                ShipPostalCode,					# (varchar(10))
+		                ShipCountry					# (varchar(15))
 			}
 		        references{
-		        	CustomerRef -> reldata.Customers.CustomerID
-		                EmployeeRef -> reldata.Employees.EmployeeID
+		        	CustomerRef -> reldata.Customers.CustomerID, 
+				CustomerRef -> mymongo.Customers.ID,
+		                EmployeeRef -> reldata.Employees.EmployeeID,
+				EmployeeRef -> mymongo.Customers.CustomerID,
+				ShipVia -> mymongo.Shippers.CustomerID,
 		                ShipVia -> reldata.Shippers.ShipperID
 		        }
 		},
 		
 		table Products {
 			columns{
-				ProductID,		# Identifiant primaire
-		                ProductName,
-		                SupplierRef,
-		                CategoryRef,
-		                QuantityPerUnit,
-		                UnitPrice,
-		                UnitsInStock,
-		                UnitsOnOrder,
-		                ReorderLevel,
-		                Discontinued
+				ProductID,		# Identifiant primaire (int)
+		                ProductName,					# (varchar(40))
+		                SupplierRef,					# (int)
+		                CategoryRef,					# (int)
+		                QuantityPerUnit,				# (varchar(20))
+		                UnitPrice,					# (decimal(10,4))
+		                UnitsInStock,					# (smallint)
+		                UnitsOnOrder,					# (smallint)
+		                ReorderLevel,					# (smallint)
+		                Discontinued					# (tinyint(1))
 			}
 			references {
-				SupplierRef -> reldata.Suppliers.SupplierID
+				SupplierRef -> reldata.Suppliers.SupplierID,
+				SupplierRef -> mymongo.Suppliers.SupplierID,
                 		CategoryRef -> reldata.Categories.CategoryID
             		}
 		},
 
         	table ProductsInfo{
 			columns{
-				ProductID,		# Identifiant primaire
-		                ProductName,
-		                SupplierRef,
-		                CategoryRef,
-		                QuantityPerUnit,
-		                UnitPrice,
-		                ReorderLevel,
-		                Discontinued
+				ProductID,		# Identifiant primaire (int)
+		                ProductName,					# (varchar(40))
+		                SupplierRef,					# (int)
+		                CategoryRef,					# (int)
+		                QuantityPerUnit,				# (varchar(20))
+		                UnitPrice,					# (decimal(10,4))
+		                ReorderLevel,					# (smallint)
+		                Discontinued					# (tinyint(1))
 			}
+			references {
+				ProductID -> reldata.Products.ProductID
+				SupplierRef -> reldata.Suppliers.SupplierID,
+				SupplierRef -> mymongo.Suppliers.SupplierID,
+                		CategoryRef -> reldata.Categories.CategoryID
+            		}
 		},
 
         	table Region{
 			columns{
-				RegionID,		# Identifiant primaire
-                		RegionDescription
+				RegionID,		# Identifiant primaire (int)
+                		RegionDescription				# (varchar(150))
 			}
 		},
 
         	table Shippers{
 			columns{
-				ShipperID,		# Identifiant primaire
-                		CompanyName,
-                		Phone
+				ShipperID,		# Identifiant primaire (int)
+                		CompanyName,					# (varchar(40))
+                		Phone						# (varchar(24))
 			}
 		},
 
         	table Suppliers{
 			columns{
-				SupplierID,		# Identifiant primaire
-		                CompanyName,
-		                ContactName,
-		                ContactTitle,
-		                Address,
-		                City,
-		                Region,
-		                PostalCode,
-		                Country,
-		                Phone,
-		                Fax,
-		                HomePage
+				SupplierID,		# Identifiant primaire (int)
+		                CompanyName,					# (varchar(40))
+		                ContactName,					# (varchar(30))
+		                ContactTitle,					# (varchar(30))
+		                Address,					# (varchar(60))
+		                City,						# (varchar(15))
+		                Region,						# (varchar(15))
+		                PostalCode,					# (varchar(10))
+		                Country,					# (varchar(15))
+		                Phone,						# (varchar(24))
+		                Fax,						# (varchar(24))
+		                HomePage					# (mediumtext)
 			}
 		},
 
         	table Territories{
 			columns{
-				TerritoryID,		# Identifiant primaire
-		                TerritoryDescription,
-		                RegionRef
-			}
+				TerritoryID,		# Identifiant primaire (varchar(20))
+		                TerritoryDescription,				# (varchar(50))
+		                RegionRef					# (int)
+			
             		references {
 				RegionRef -> reldata.Region.RegionID
             		}
-		},
-
-    		table Categories {
-			columns{
-				CategoryID,		# Identifiant primaire
-				CategoryName,
-				Description,
-				Picture
-			}
-			references {
-			}
-		},
-
-		table CustomerDemographics {
-			columns{
-		            CustomerTypeID,		# Identifiant primaire
-		            CustomerDesc
-		        }
-		        references {
-		        }
-	        },
-
-    		table Customers {
-			columns{
-				CustomerID,		# Identifiant primaire
-				CompanyName,
-				ContactName,
-				ContactTitle,
-				Address,
-				City,
-				Region,
-				PostalCode,
-				Country,
-				Phone,
-				Fax
-			}
-			references {
-				CustomerID -> mymongo.Customers.id
-			}
-		},
-
-		table Employees {
-		        columns{
-		            EmployeeID,		# Identifiant primaire
-		            LastName,
-		            FirstName,
-		            Title,
-		            TitleOfCourtesy,
-		            BirthDate,
-		            HireDate,
-		            Address,
-		            City,
-		            Region,
-		            PostalCode,
-		            Country,
-		            HomePhone,
-		            Extension,
-		            Photo,
-		            Notes,
-		            ReportsTo,
-		            PhotoPath,
-		            Salary
-		        }
-		        references {
-		            EmployeeID -> mymongo.Employees.id
-		        }
-		},
-	
-		table EmployeesTerritories {
-		        columns{
-		            EmployeeRef,	# Identifiant primaire
-		            TerritoryRef 	# Identifiant primaire
-		        }
-		        references {
-		        }
-		},
-	
-		table Order_Details {
-			columns{
-				OrderRef,	# Identifiant primaire
-				ProductRef,	# Identifiant primaire
-				UnitPrice,
-				Quantity,
-				Discount
-				}
-			references {
-				}
 		}
+
 	}
 }
 
