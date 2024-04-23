@@ -213,7 +213,7 @@ physical schemas {
 		        	CustomerRef -> reldata.Customers.CustomerID, 
 				CustomerRef -> mymongo.Customers.ID,
 		                EmployeeRef -> reldata.Employees.EmployeeID,
-				EmployeeRef -> mymongo.Customers.CustomerID,
+				EmployeeRef -> mymongo.Emplyees.ID,
 				ShipVia -> mymongo.Shippers.CustomerID,
 		                ShipVia -> reldata.Shippers.ShipperID
 		        }
