@@ -74,6 +74,43 @@ physical schemas {
 				UnitsInStock,
 				UnitsOnOrder
 				}
+		},
+
+		kvpairs EmployeesOrders {
+			key: "EMPLOYEE:"[EMPLOYEEID]":ORDER:"[ORDERID],
+			value : hash {				
+				Freight,				
+				OrderDate, 				
+				RequiredDate,				
+				ShipAddress,				
+				customer.ContactName,				
+				customer.CustomerID,				
+				ShipCity,				
+				ShipCountry,				
+				ShipName,				
+				ShipPostalCode,				
+				ShipRegion,				
+				ShipVia,				
+				ShippedDate,
+				Employee.Address,				
+				Employee.City,					
+				Employee.Country,				
+				Employee.Extension,				
+				Employee.FirstName, 				
+				Employee.HireDate,				
+				Employee.HomePhone, 				
+				Employee.LastName,				
+				Employee.Photo, 					
+				Employee.PostalCode, 				
+				Employee.Region, 				
+				Employee.Salary,					
+				Employee.Title,					
+				Employee.BirthDate,								
+				Employee.Notes, 					
+				Employee.PhotoPath,				
+				Employee.ReportsTo,				
+				Employee.TitleOfCourtesy				
+			}
 		}
 	},
 
