@@ -147,7 +147,6 @@ physical schemas {
 			references {
 				ProductID -> reldata.Products.ProductID
 				SupplierRef -> reldata.Suppliers.SupplierID,
-				SupplierRef -> mymongo.Suppliers.SupplierID,
                 		CategoryRef -> reldata.Categories.CategoryID
             		}
 		},
