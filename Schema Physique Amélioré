@@ -39,7 +39,11 @@ physical schemas {
 				Notes, 					# (String)
 				PhotoPath,				# (String)
 				ReportsTo,				# (String)
-				TitleOfCourtesy				# (String)
+				TitleOfCourtesy,			# (String)
+				EmployeeTerritories{			# (Object)
+					Territories,				# (Array)
+					Regions					# (Array)
+				}
 			}
 		},
 
@@ -123,17 +127,6 @@ physical schemas {
 				Description,					# (mediumtext)
 				Picture						# (varchar(15))
 			}
-		},
-
-		table EmployeesTerritories {
-		        columns{
-		            EmployeeRef,		# Identifiant primaire (int)
-		            TerritoryRef 		# Identifiant primaire (varchar(20))
-		        }
-		        references {
-			    EmployeeRef -> mymongo.Employees.EmployeeID, 
-	   	 	    TerritoryRef -> myrel.Territories.TerritoryID
-		        }
 		},
 	
 		table Order_Details {
