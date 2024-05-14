@@ -110,27 +110,8 @@ physical schemas {
 			references {
 				OrderRef -> myrel.Orders.OrderID, 
 				OrderRef -> mymongo.Orders.OrderID
-				ProductRef -> myrel.Products.ProductID
+				ProductRef -> myrel.ProductsInfo.ProductID
 				}
-		},
-
-		table Products {
-			columns{
-				ProductID,		# Identifiant primaire (int)
-		                ProductName,					# (varchar(40))
-		                SupplierRef,					# (int)
-		                CategoryRef,					# (int)
-		                QuantityPerUnit,				# (varchar(20))
-		                UnitPrice,					# (decimal(10,4))
-		                UnitsInStock,					# (smallint)
-		                UnitsOnOrder,					# (smallint)
-		                ReorderLevel,					# (smallint)
-		                Discontinued					# (tinyint(1))
-			}
-			references {
-				SupplierRef -> reldata.Suppliers.SupplierID,
-                		CategoryRef -> reldata.Categories.CategoryID
-            		}
 		},
 		
         	table ProductsInfo{
@@ -145,7 +126,6 @@ physical schemas {
 		                Discontinued					# (tinyint(1))
 			}
 			references {
-				ProductID -> reldata.Products.ProductID
 				SupplierRef -> reldata.Suppliers.SupplierID,
                 		CategoryRef -> reldata.Categories.CategoryID
             		}
