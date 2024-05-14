@@ -65,24 +65,6 @@ physical schemas {
 				ShippedDate				# (ISODate)
 			}
 		}, 
-
-		collection Suppliers {
-			fields {
-				_id,		# Identifiant primaire (ObjectId)
-				Address,				# (String)
-				City, 					# (String)
-				CompanyName,				# (String)
-				ContactName,				# (String) 
-				ContactTitle,				# (String)
-				Country,				# (String)
-				Fax,					# (String)
-				HomePage,				# (String)
-				Phone,					# (String)
-				PostalCode,				# (String)
-				Region, 				# (String)
-				SupplierID				# (Int32)
-			}
-		}
 	}, 
 
 	key value schema myredis {
