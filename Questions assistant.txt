@@ -29,3 +29,9 @@ Mettre les clés primaires et étrangères (documentation)
 2.3. Infos liées au shipper 2
 
 - Privilégier le fait que le code soit réutilisable ou bien moins des lignes? (Car dans tous les cas on doit savoir à quoi correspondent les infos)
+
+3. Nouveau Schéma physique
+- Pour le point 3, est-ce qu'on doit migrer les données ou juste donner un nouveau schéma physique?
+- Est-ce qu'on doit utiliser d'autres technologies (Cassandra, Neo4j, ...)?
+- Est-ce que quand on nous demande "toutes les informations concernant le client" par exemple, cela veut dire toutes les informations qui se trouvent dans la table Client ou alors on doit aller plus loin et rechercher leurs commandes, les fournisseurs de leurs commandes, etc.?
+- Est-ce que, si on fait de la réplication des données et du sharding, cela doit apparaître dans le nouveau schéma physique ou seulement être expliqué en texte?
