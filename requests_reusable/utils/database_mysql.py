@@ -12,14 +12,16 @@ import redis
 
 from utils.config import database_credential_dict
 
-def get_df_from_mysql(query:str, db: str = 'bigdata_mysql',
+def get_df_from_mysql(query:str, params:tuple, db:str = 'bigdata_mysql',
                       database_credential_dict: dict = database_credential_dict, optionnal_message:str ="",)-> pd.DataFrame:
     """
-    Queries MySQL database and returns the results under a pandas DataFrame object
+    Queries MySQL database and returns the results under a pandas DataFrame object \n
+    Supports SQL injection prevention. Ex: query = "select * from db.table where user = %s" ; params = ('myusername',)
 
     Input
     -----
     `query`: sql query
+    `params`: used in "prepared sql statement" to prevent sql injection 
     `db`: database key used to retrieve connection information in config dictionary
     `database_credential_dict`: config dictionary containing encrypted connection information
     `optionnal_message`: message displayed when function is called
@@ -41,7 +43,7 @@ def get_df_from_mysql(query:str, db: str = 'bigdata_mysql',
     start_time = time.time()
     print(f"[{datetime.now().strftime('%H:%M:%S')}] Database connection to {db}...")  
     with connection.connect(host=server, database = database,user=username, passwd=password,port = port) as db_object:
-        df = pd.read_sql(query,db_object)
+        df = pd.read_sql(query,db_object, params=params)
         print(f"{optionnal_message}" +"runtime -> %s seconds" % (round(time.time() - start_time,2)))
         return df
 
