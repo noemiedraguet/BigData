@@ -10,7 +10,7 @@ import mysql.connector as connection
 import pymongo
 import redis
 
-from utils.config import database_credential_dict
+from ..utils.config import database_credential_dict
 
 def get_df_from_mysql(query:str, params:tuple, db:str = 'bigdata_mysql',
                       database_credential_dict: dict = database_credential_dict, optionnal_message:str ="",)-> pd.DataFrame:
