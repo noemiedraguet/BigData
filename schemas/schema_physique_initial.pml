@@ -197,7 +197,7 @@ physical schemas {
 			OrderRef -> mymongo.Orders.OrderID,
 			ProductRef -> reldata.ProductsInfo.ProductID,
 			ProductRef -> reldata.Products.ProductID,
-			ProductRef -> myredis.stockInfoKV.ProductID,
+			ProductRef -> myredis.stockInfoKV.ProductID
 			}
 		},
 

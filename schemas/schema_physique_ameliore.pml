@@ -40,10 +40,15 @@ physical schemas {
 				PhotoPath,				# (String)
 				ReportsTo,				# (String)
 				TitleOfCourtesy,			# (String)
-				EmployeeTerritories[0-N]{			# (Object)
-					Territories,				# (Array)
-					Regions					# (Array)
+				Territories[0-N]{			# (Object)
+					TerritoryID,				# (varchar(20))
+					Region					# (int)
 				}
+			}
+			references {
+				ReportsTo -> mymongo.Employees.EmployeeID,
+				Territories.TerritoryID -> reldata.Territories.TerritoryID,
+				Territories.Region -> reldata.Region.RegionID
 			}
 		},
 
@@ -68,7 +73,30 @@ physical schemas {
 				ShipVia,				# (Int32)
 				ShippedDate				# (ISODate)
 			}
+			references{
+				EmployeeRef -> mymongo.Employees.EmployeeID,
+				customer.ContactName -> mymongo.Customers.ContactName,
+				customer.CustomerID -> mymongo.Customers.ID,
+				ShipVia -> mymongo.Shippers.ShipperID
+			}
 		}, 
+
+		collection Shippers{
+			fields {
+				_id,		# Identifiant primaire (ObjectId)
+				ShipperID,		# (int)
+                		CompanyName,					# (varchar(40))
+                		Phone,						# (varchar(24))
+						Partners[0-N]{         # (Object)
+							ShipperID,         # (int)
+							CompanyName,       # (varchar(40))
+							Phone              # (Object)
+						}               
+			}
+			references{
+				Partners.ShipperID -> mymongo.Shippers.ShipperID
+			}
+		},
 	}, 
 
 	key value schema myredis {
@@ -115,6 +143,9 @@ physical schemas {
 				Employee.ReportsTo,				
 				Employee.TitleOfCourtesy				
 			}
+			references{
+
+			}
 		}
 	},
 
@@ -138,8 +169,9 @@ physical schemas {
 				Discount					# (double(8,0)) 					 
 				}
 			references {
-				OrderRef -> mymongo.Orders.OrderID
-				ProductRef -> myrel.ProductsInfo.ProductID
+				OrderRef -> mymongo.Orders.OrderID,
+				ProductRef -> myrel.ProductsInfo.ProductID,
+				ProductRef -> myredis.stockInfo.ProductID
 				}
 		},
 		
@@ -155,6 +187,7 @@ physical schemas {
 		                Discontinued					# (tinyint(1))
 			}
 			references {
+				ProductID -> myredis.stockInfo.ProductID,
 				SupplierRef -> reldata.Suppliers.SupplierID,
                 		CategoryRef -> reldata.Categories.CategoryID
             		}
@@ -164,14 +197,6 @@ physical schemas {
 			columns{
 				RegionID,		# Identifiant primaire (int)
                 		RegionDescription				# (varchar(150))
-			}
-		},
-
-        	table Shippers{
-			columns{
-				ShipperID,		# Identifiant primaire (int)
-                		CompanyName,					# (varchar(40))
-                		Phone						# (varchar(24))
 			}
 		},
 
