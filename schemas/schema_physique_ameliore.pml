@@ -41,14 +41,12 @@ physical schemas {
 				ReportsTo,				# (String)
 				TitleOfCourtesy,			# (String)
 				Territories[0-N]{			# (Object)
-					TerritoryID,				# (varchar(20))
-					Region					# (int)
+					TerritoryID				# (varchar(20))
 				}
 			}
 			references {
 				ReportsTo -> mymongo.Employees.EmployeeID,
 				Territories.TerritoryID -> reldata.Territories.TerritoryID,
-				Territories.Region -> reldata.Region.RegionID
 			}
 		},
 
