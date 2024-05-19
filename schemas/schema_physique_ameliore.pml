@@ -138,7 +138,6 @@ physical schemas {
 				Discount					# (double(8,0)) 					 
 				}
 			references {
-				OrderRef -> myrel.Orders.OrderID, 
 				OrderRef -> mymongo.Orders.OrderID
 				ProductRef -> myrel.ProductsInfo.ProductID
 				}
