@@ -40,7 +40,7 @@ physical schemas {
 				PhotoPath,				# (String)
 				ReportsTo,				# (String)
 				TitleOfCourtesy,			# (String)
-				EmployeeTerritories{			# (Object)
+				EmployeeTerritories[0-N]{			# (Object)
 					Territories,				# (Array)
 					Regions					# (Array)
 				}
