@@ -82,13 +82,13 @@ physical schemas {
 		collection Shippers{
 			fields {
 				_id,		# Identifiant primaire (ObjectId)
-				ShipperID,		# (int)
-                		CompanyName,					# (varchar(40))
-                		Phone,						# (varchar(24))
+				ShipperID,		# (int32)
+                		CompanyName,					# (String)
+                		Phone,						# (String)
 						Partners[0-N]{         # (Object)
-							ShipperID,         # (int)
-							CompanyName,       # (varchar(40))
-							Phone              # (Object)
+							ShipperID,         # (int32)
+							CompanyName,       # (String)
+							Phone              # (String)
 						}               
 			}
 			references{
@@ -140,9 +140,6 @@ physical schemas {
 				Employee.PhotoPath,				
 				Employee.ReportsTo,				
 				Employee.TitleOfCourtesy				
-			}
-			references{
-
 			}
 		}
 	},
