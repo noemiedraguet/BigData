@@ -1,5 +1,5 @@
 physical schemas { 
-														
+
 	document schema mymongo {
 		collection Customers {
 			fields {
