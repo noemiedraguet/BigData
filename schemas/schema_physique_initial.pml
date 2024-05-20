@@ -146,23 +146,23 @@ physical schemas {
 	table Employees {
 		columns{
 		    	EmployeeID,			# Identifiant primaire (int(auto increment))
-		        LastName,						# (varchar(20))
-		        FirstName,						# (varchar(10))
+		        LastName,					# (varchar(20))
+		        FirstName,					# (varchar(10))
 		        Title,						# (varchar(30))
-		    	TitleOfCourtesy,					# (varchar(25))
-		        BirthDate,						# (datetime)
-		        HireDate,						# (datetime)
-		        Address,						# (varchar(60))
+		    	TitleOfCourtesy,				# (varchar(25))
+		        BirthDate,					# (datetime)
+		        HireDate,					# (datetime)
+		        Address,					# (varchar(60))
 		        City,						# (varchar(15))
 		        Region,						# (varchar(15))
-		        PostalCode,						# (varchar(10))
-		        Country,						# (varchar(15))
-		        HomePhone,						# (varchar(24))
-		        Extension,						# (varchar(4))
+		        PostalCode,					# (varchar(10))
+		        Country,					# (varchar(15))
+		        HomePhone,					# (varchar(24))
+		        Extension,					# (varchar(4))
 		        Photo,						# (longblob)
 		        Notes,						# (mediumtext)
-		        ReportsTo,						# (int)
-		        PhotoPath,						# (varchar(255))
+		        ReportsTo,					# (int)
+		        PhotoPath,					# (varchar(255))
 		        Salary						# (float)
 		    	}
 		references {
@@ -276,7 +276,7 @@ physical schemas {
     	table Region{
 		columns{
 			RegionID,		# Identifiant primaire (int)
-                	RegionDescription			# (varchar(50))
+                	RegionDescription				# (varchar(50))
 			}
 		},
 
