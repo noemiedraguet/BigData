@@ -71,7 +71,7 @@ physical schemas {
 				ShipVia,				# (Int32)
 				ShippedDate,				# (ISODate)
 				OrderDetail[1-N]{         		# (Object)
-					ProductRef,				# (int)
+					ProductRef,				# (Int32)
 					UnitPrice,				# (Float)
 					Quantity,				# (Int32)
 					Discount				# (Float) 
