@@ -41,7 +41,7 @@ physical schemas {
 				ReportsTo,				# (String)
 				TitleOfCourtesy,			# (String)
 				Territories[0-N]{			# (Object)
-					TerritoryID				# (varchar(20))
+					TerritoryID				# (String)
 				}
 			}
 			references {
@@ -70,11 +70,11 @@ physical schemas {
 				ShipRegion,				# (String)
 				ShipVia,				# (Int32)
 				ShippedDate,				# (ISODate)
-				OrderDetail[1-N]{         # (Object)
-					ProductRef,		# (int)
-					UnitPrice,					# (decimal(10,4))
-					Quantity,					# (smallint)
-					Discount					# (double(8,0)) 
+				OrderDetail[1-N]{         		# (Object)
+					ProductRef,				# (int)
+					UnitPrice,				# (Float)
+					Quantity,				# (Int32)
+					Discount				# (Float) 
 				}
 			}
 			references{
@@ -90,14 +90,14 @@ physical schemas {
 		collection Shippers{
 			fields {
 				_id,		# Identifiant primaire (ObjectId)
-				ShipperID,		# (int32)
-                		CompanyName,					# (String)
-                		Phone,						# (String)
-						Partners[0-N]{         # (Object)
-							ShipperID,         # (int32)
-							CompanyName,       # (String)
-							Phone              # (String)
-						}               
+				ShipperID,				# (Int32)
+                		CompanyName,				# (String)
+                		Phone,					# (String)
+				Partners[0-N]{         			# (Object)
+					ShipperID,         			# (Int32)
+					CompanyName,       			# (String)
+					Phone              			# (String)
+				}               
 			}
 			references{
 				Partners.ShipperID -> mymongo.Shippers.ShipperID
