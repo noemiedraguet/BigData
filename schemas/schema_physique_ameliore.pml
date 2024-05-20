@@ -69,13 +69,21 @@ physical schemas {
 				ShipPostalCode,				# (String)
 				ShipRegion,				# (String)
 				ShipVia,				# (Int32)
-				ShippedDate				# (ISODate)
+				ShippedDate,				# (ISODate)
+				OrderDetail[1-N]{         # (Object)
+					ProductRef,		# (int)
+					UnitPrice,					# (decimal(10,4))
+					Quantity,					# (smallint)
+					Discount					# (double(8,0)) 
+				}
 			}
 			references{
 				EmployeeRef -> mymongo.Employees.EmployeeID,
 				customer.ContactName -> mymongo.Customers.ContactName,
 				customer.CustomerID -> mymongo.Customers.ID,
 				ShipVia -> mymongo.Shippers.ShipperID
+				OrderDetail.ProductRef -> myrel.ProductsInfo.ProductID,
+				OrderDetail.ProductRef -> myredis.stockInfo.ProductID
 			}
 		}, 
 
@@ -94,7 +102,7 @@ physical schemas {
 			references{
 				Partners.ShipperID -> mymongo.Shippers.ShipperID
 			}
-		},
+		}
 	}, 
 
 	key value schema myredis {
@@ -153,21 +161,6 @@ physical schemas {
 				Description,					# (mediumtext)
 				Picture						# (varchar(15))
 			}
-		},
-	
-		table Order_Details {
-			columns{
-				OrderRef,		# Identifiant primaire (int)
-				ProductRef,		# Identifiant primaire (int)
-				UnitPrice,					# (decimal(10,4))
-				Quantity,					# (smallint)
-				Discount					# (double(8,0)) 					 
-				}
-			references {
-				OrderRef -> mymongo.Orders.OrderID,
-				ProductRef -> myrel.ProductsInfo.ProductID,
-				ProductRef -> myredis.stockInfo.ProductID
-				}
 		},
 		
         	table ProductsInfo{
